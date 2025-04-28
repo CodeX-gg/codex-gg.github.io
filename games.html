@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeX - Games</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Add these lines to your HTML head section -->
+<link rel="stylesheet" href="admin-panel.css">
+<script src="user-check.js"></script>
+<script src="admin-panel.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.svg" alt="CodeX Logo">
+            <h1>CodeX</h1>
+        </div>
+            
+        <nav>
+            <ul>
+                <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="games.html" class="active"><i class="fas fa-gamepad"></i> Games</a></li>
+                <li><a href="music.html"><i class="fas fa-music"></i> Music</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="system.html"><i class="fas fa-microchip"></i> System</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+        </nav>
+    </header>
+   
+    <main>
+        <section class="content">
+            <h2><i class="fas fa-gamepad"></i> Game Library</h2>
+            <div class="search-container">
+                <div class="search-bar">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="game-search" placeholder="Search for games...">
+                    <button id="clear-search" class="clear-search-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <p>Browse our extensive collection of games. Click "Play Now" to launch any game in a new tab. All games are optimized to work in restricted environments.</p>
+        </section>
+           
+        <section class="games-grid">
+            <!-- New games list with consistent layout -->
+            <div class="game-card">
+                <h3>Ragdoll Hit</h3>
+                <button onclick="openGame('games/ragdollhit/index.html')">
+                    <i class="fas fa-play"></i> Play Now
+                </button>
+            </div>
+            <div class="game-card">
+                <h3>Ragdoll Archers</h3>
+                <button onclick="openGame('games/ragdollarchers/index.html')">
+                    <i class="fas fa-play"></i> Play Now
+                </button>
+            </div>
+            <div class="game-card">
+                <h3>Yohoho.io</h3>
+                <button onclick="openGame('games/yohohoio/index.html')">
+                    <i class="fas fa-play"></i> Play Now
+                </button>
+            </div>
+            <div class="game-card">
+                <h3>Retro Bowl</h3>
+                <button onclick="openGame('games/retrobowl/index.html')">
+                    <i class="fas fa-play"></i> Play Now
+                </button>
+            </div>
+            <div class="game-card">
+                <h3>Bitlife</h3>
+                <button onclick="openGame('games/bitlife/index.html')">
+                    <i class="fas fa-play"></i> Play Now
+                </button>
+            </div>
+            <div class="game-card">
+                <h3>Geometry Dash</h3>
+                <button onclick="openGame('games/geometrydash/index.html')">
+                    <i class="fas fa-play"></i> Play Now
+                </button>
+            </div>
+            <div class="game-card">
+                <h3>Final Earth 2</h3>
+                <button onclick="openGame('games/finalearth2/index.html')">
+                    <i class="fas fa-play"></i> Play Now
+                </button>
+            </div>
+            <div class="game-card">
+                <h3>Never Ending Leagacy</h3>
+                <button onclick="openGame('games/neverendinglegacy/index.html')">
+                    <i class="fas fa-play"></i> Play Now
+                </button>
+            </div>
+            <div class="game-card">
+                <h3>Rope Police</h3>
+                <button onclick="openGame('games/ropepolice/index.html')">
+                    <i class="fas fa-play"></i> Play Now
+                </button>
+            </div>
+            <div class="game-card">
+                <h3>Tower Defense</h3>
+                <button onclick="openGame('games/towerdefense.html')">
+                    <i class="fas fa-play"></i> Play Now
+                </button>
+            </div>
+            <div class="game-card">
+                <h3>Appel</h3>
+                <button onclick="openGame('games/appel.html')">
+                    <i class="fas fa-play"></i> Play Now
+                </button>
+            </div>
+            <div class="game-card">
+                <h3>Nitro Racing</h3>
+                <button onclick="openGame('games/nitroracing.html')">
+                    <i class="fas fa-play"></i> Play Now
+                </button>
+            </div>
+            <div class="game-card">
+                <h3>Terminus</h3>
+                <button onclick="openGame('games/terminus.html')">
+                    <i class="fas fa-play"></i> Play Now
+                </button>
+            </div>
+            <div class="game-card">
+                <h3>Windows</h3>
+                <button onclick="openGame('games/windows.html')">
+                    <i class="fas fa-play"></i> Play Now
+                </button>
+            </div>
+            <div class="game-card">
+                <h3>15 Percent</h3>
+                <button onclick="openGame('games/15.html')">
+                    <i class="fas fa-play"></i> Play Now
+                </button>
+            </div>
+            </section>
+        </main>
+       
+        <footer>
+            <p>© 2023 CodeX Gaming. All rights reserved. <i class="fas fa-code"></i> with <i class="fas fa-heart" style="color: var(--primary);"></i></p>
+        </footer>
+       
+        <div class="page-transition"></div>
+       
+        <script src="script.js"></script>
+        <script>
+            function applyWebsiteSettings() {
+              const savedSettingsJSON = localStorage.getItem('websiteSettings');
+              if (savedSettingsJSON) {
+                try {
+                  const savedSettings = JSON.parse(savedSettingsJSON);
+                  if (savedSettings.title) document.title = savedSettings.title;
+                  if (savedSettings.favicon) {
+                    let faviconLink = document.querySelector('link[rel="icon"]');
+                    if (!faviconLink) {
+                      faviconLink = document.createElement('link');
+                      faviconLink.rel = 'icon';
+                      document.head.appendChild(faviconLink);
+                    }
+                    faviconLink.href = savedSettings.favicon;
+                  }
+                  if (savedSettings.theme) document.body.className = savedSettings.theme;
+                } catch (error) {
+                  console.error('Error applying website settings:', error);
+                }
+              }
+            }
+            applyWebsiteSettings();
+            window.addEventListener('storage', function(e) {
+              if (e.key === 'settingsUpdated' || e.key === 'websiteSettings') {
+                applyWebsiteSettings();
+              }
+            });
+          </script>
+      </body>
+    </html>
+    
