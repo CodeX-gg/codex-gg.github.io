@@ -7,8 +7,9 @@ function checkPassword() {
     const correctPassword = "gamz69";
     
     if (password === correctPassword) {
-        // Set authentication in session storage
+        // Set authentication in session storage with timestamp
         sessionStorage.setItem('authenticated', 'true');
+        sessionStorage.setItem('authTimestamp', Date.now().toString());
         
         // Show page transition
         const transition = document.querySelector('.page-transition');
@@ -35,6 +36,22 @@ function checkPassword() {
             errorMessage.textContent = "";
         }, 3000);
     }
+}
+
+// Function to verify authentication
+function verifyAuth() {
+    const authenticated = sessionStorage.getItem('authenticated');
+    const authTimestamp = sessionStorage.getItem('authTimestamp');
+    const currentTime = Date.now();
+    
+    // Check if authentication exists and is not expired (30 minute session)
+    if (!authenticated || !authTimestamp || currentTime - parseInt(authTimestamp) > 1800000) {
+        sessionStorage.removeItem('authenticated');
+        sessionStorage.removeItem('authTimestamp');
+        window.location.replace("index.html");
+        return false;
+    }
+    return true;
 }
 
 // Function to open games in a new tab with CodeX Game title
@@ -67,6 +84,19 @@ function searchMusic(query) {
 // Initialize event listeners when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM fully loaded');
+    
+    // Check authentication first
+    const protectedPages = ['home.html', 'games.html', 'music.html', 'about.html', 'system.html', 'settings.html'];
+    const currentPath = window.location.pathname;
+    
+    // Check if current page is a protected page
+    if (protectedPages.some(page => currentPath.endsWith(page) || currentPath.includes(page.replace('.html', '')))) {
+        if (!verifyAuth()) {
+            return;
+        }
+        // Refresh auth timestamp on activity
+        sessionStorage.setItem('authTimestamp', Date.now().toString());
+    }
     
     // Apply saved settings to all pages
     applySavedSettings();
@@ -118,6 +148,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const href = this.getAttribute('href');
             const transition = document.querySelector('.page-transition');
             
+            // Verify authentication before navigation
+            if (!verifyAuth()) {
+                return;
+            }
+            
             transition.classList.add('active');
             
             setTimeout(() => {
@@ -125,19 +160,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 500);
         });
     });
-    
-    // Check if user is trying to access protected pages directly
-    const protectedPages = ['home.html', 'games.html', 'music.html', 'about.html'];
-    const currentPath = window.location.pathname;
-    
-    // Check if current page is a protected page
-    if (protectedPages.some(page => currentPath.endsWith(page) || currentPath.includes(page.replace('.html', '')))) {
-        // Check if user is authenticated
-        if (!sessionStorage.getItem('authenticated')) {
-            window.location.replace("index.html");
-            return;
-        }
-    }
     
     // Add scroll animation for elements
     const animateOnScroll = function() {
