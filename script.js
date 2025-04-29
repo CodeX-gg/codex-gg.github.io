@@ -7,6 +7,9 @@ function checkPassword() {
     const correctPassword = "codex123";
     
     if (password === correctPassword) {
+        // Set authentication in session storage
+        sessionStorage.setItem('authenticated', 'true');
+        
         // Show page transition
         const transition = document.querySelector('.page-transition');
         transition.classList.add('active');
@@ -129,12 +132,9 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.pathname.includes('music.html') || 
         window.location.pathname.includes('about.html')) {
         
-        // This is a simple check - in a real application, you would use sessions or cookies
+        // Check if user is authenticated
         if (!sessionStorage.getItem('authenticated')) {
-            // For demo purposes, we'll just set authenticated to true
-            sessionStorage.setItem('authenticated', 'true');
-            // Uncomment the line below to enforce login in a real application
-            // window.location.href = "index.html";
+            window.location.href = "index.html";
         }
     }
     
@@ -326,5 +326,3 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize search on page load
     performSearch();
 });
-
-
