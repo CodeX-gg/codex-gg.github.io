@@ -4,7 +4,7 @@ function checkPassword() {
     const errorMessage = document.getElementById('error-message');
     
     // Set the password here
-    const correctPassword = "gamz69";
+    const correctPassword = "codex123";
     
     if (password === correctPassword) {
         // Set authentication in session storage
@@ -127,14 +127,15 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Check if user is trying to access protected pages directly
-    if (window.location.pathname.includes('home.html') || 
-        window.location.pathname.includes('games.html') || 
-        window.location.pathname.includes('music.html') || 
-        window.location.pathname.includes('about.html')) {
-        
+    const protectedPages = ['home.html', 'games.html', 'music.html', 'about.html'];
+    const currentPath = window.location.pathname;
+    
+    // Check if current page is a protected page
+    if (protectedPages.some(page => currentPath.endsWith(page) || currentPath.includes(page.replace('.html', '')))) {
         // Check if user is authenticated
         if (!sessionStorage.getItem('authenticated')) {
-            window.location.href = "index.html";
+            window.location.replace("index.html");
+            return;
         }
     }
     
