@@ -4,7 +4,7 @@ function checkPassword() {
     const errorMessage = document.getElementById('error-message');
     
     // Set the password here
-    const correctPassword = "codex123";
+    const correctPassword = "gamz69";
     
     if (password === correctPassword) {
         // Set authentication in session storage
