@@ -9,7 +9,9 @@
     </style>
   </head>
   <body>
-    <div id="reason"></div>
+    <div id="reason">
+      <h1>Incorrect password.</h1>
+    </div>
     <script>
       const get = new URLSearchParams(location.search);
       document.getElementById('reason').innerHTML = get.get('reason');
