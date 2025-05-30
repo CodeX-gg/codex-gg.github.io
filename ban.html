@@ -12,7 +12,7 @@
     <div id="reason"></div>
     <script>
       const get = new URLSearchParams(location.search);
-      document.getElementById('reason').innerText = get.get('reason');
+      document.getElementById('reason').innerHTML = get.get('reason');
       localStorage.clear();
     </script>
   </body>
