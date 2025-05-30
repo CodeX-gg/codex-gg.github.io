@@ -12,11 +12,7 @@
     <h1 id="reason"></h1>
     <script>
       const get = new URLSearchParams(location.search);
-    if (get.get('reason') == 'block') {
-        document.getElementById('reason').innerText = 'You have been blocked from CodeX. Please try again later.';
-    } else if (get.get('reason') == 'ban') {
-        document.getElementById('reason').innerText = 'You have been banned from CodeX.';
-    }
+      document.getElementById('reason').innerText = get.get('reason');
       localStorage.clear();
     </script>
   </body>
