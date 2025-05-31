@@ -1,6 +1,6 @@
 // Password protection
 function checkPassword() {
-    if (localStorage.getItem('in') !== null) {
+    if (localStorage.getItem('in') === null) {
         const password = document.getElementById('password').value;
         const errorMessage = document.getElementById('error-message');
         
@@ -38,7 +38,7 @@ function checkPassword() {
                 errorMessage.textContent = "";
             }, 3000);
         }
-    } else if (localStorage.getItem('in') === true) {
+    } else {
         // Show page transition
         const transition = document.querySelector('.page-transition');
         transition.classList.add('active');
