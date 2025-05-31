@@ -391,10 +391,10 @@ document.addEventListener('DOMContentLoaded', function() {
             const href = this.getAttribute('href');
             const transition = document.querySelector('.page-transition');
             
-            // Verify authentication before navigation
+            /* Verify authentication before navigation
             if (!verifyAuth()) {
                 return;
-            }
+            }*/
             
             transition.classList.add('active');
             
