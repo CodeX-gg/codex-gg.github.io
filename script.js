@@ -328,7 +328,7 @@ function searchMusic(query) {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM fully loaded');
     
-    // Check authentication first
+    /* Check authentication first
     const protectedPages = ['home.html', 'games.html', 'music.html', 'about.html', 'system.html', 'settings.html'];
     const currentPath = window.location.pathname;
     
@@ -341,13 +341,13 @@ document.addEventListener('DOMContentLoaded', function() {
         sessionStorage.setItem('authTimestamp', Date.now().toString());
     }
     
-    // Apply saved settings to all pages
+    Apply saved settings to all pages */
     applySavedSettings();
     
     // Add animation class to body
     document.body.classList.add('loaded');
     
-    // Handle password input
+    /* Handle password input
     const passwordInput = document.getElementById('password');
     if (passwordInput) {
         console.log('Password input found');
@@ -361,7 +361,7 @@ document.addEventListener('DOMContentLoaded', function() {
         passwordInput.focus();
     }
     
-    // Handle music search functionality
+    Handle music search functionality */
     const musicSearchButton = document.getElementById('music-search-button');
     const musicSearchInput = document.getElementById('music-search-input');
     
