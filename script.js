@@ -1,44 +1,17 @@
-// Password protection
+/* Password protection
 function checkPassword() {
-    if (localStorage.getItem('in') === null) {
-        const password = document.getElementById('password').value;
-        const errorMessage = document.getElementById('error-message');
+    const password = document.getElementById('password').value;
+    const errorMessage = document.getElementById('error-message');
         
-        // Set the password here
-        const correctPassword = "gamz69";
+    // Set the password here
+    const correctPassword = "gamz69";
         
-        if (password === correctPassword) {
-            localStorage.setItem('in', true);
-            // Set authentication in session storage with timestamp
-            sessionStorage.setItem('authenticated', 'true');
-            sessionStorage.setItem('authTimestamp', Date.now().toString());
+    if (password === correctPassword) {
+        localStorage.setItem('in', true);
+        // Set authentication in session storage with timestamp
+        sessionStorage.setItem('authenticated', 'true');
+        sessionStorage.setItem('authTimestamp', Date.now().toString());
             
-            // Show page transition
-            const transition = document.querySelector('.page-transition');
-            transition.classList.add('active');
-            
-            // Redirect to home page on correct password after transition
-            setTimeout(() => {
-                window.location.href = "home.html";
-            }, 500);
-        } else {
-            // Show error message on incorrect password
-            errorMessage.textContent = "Incorrect password. Please try again.";
-            // Add shake animation to input
-            const passwordInput = document.getElementById('password');
-            passwordInput.classList.add('shake');
-            
-            // Remove shake class after animation completes
-            setTimeout(() => {
-                passwordInput.classList.remove('shake');
-            }, 500);
-            
-            // Clear the error message after 3 seconds
-            setTimeout(() => {
-                errorMessage.textContent = "";
-            }, 3000);
-        }
-    } else {
         // Show page transition
         const transition = document.querySelector('.page-transition');
         transition.classList.add('active');
@@ -47,6 +20,22 @@ function checkPassword() {
         setTimeout(() => {
             window.location.href = "home.html";
         }, 500);
+    } else {
+        // Show error message on incorrect password
+        errorMessage.textContent = "Incorrect password. Please try again.";
+        // Add shake animation to input
+        const passwordInput = document.getElementById('password');
+        passwordInput.classList.add('shake');
+            
+        // Remove shake class after animation completes
+         setTimeout(() => {
+            passwordInput.classList.remove('shake');
+        }, 500);
+            
+        // Clear the error message after 3 seconds
+        setTimeout(() => {
+            errorMessage.textContent = "";
+        }, 3000);
     }
 }
 
@@ -66,7 +55,7 @@ function verifyAuth() {
     return true;
 }
 
-// Function to open games in a new tab with CodeX Game title
+Function to open games in a new tab with CodeX Game title */
 function openGame(gameUrl) {
         // Create a new window
     const gameWindow = window.open('', '_blank');
